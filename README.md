@@ -40,8 +40,17 @@ You can use both ISO2 or ISO3 country code format (two or three characters is fi
 
 ## Set up frontend
 
+First, install dependencies
+
 ```
 cd front
 npm install
+```
+
+Then, rename the .env.template file to .env and fill the fields.
+
+To run in:
+
+```
 npm run dev
 ```
