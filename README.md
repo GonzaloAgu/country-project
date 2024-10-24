@@ -1,6 +1,4 @@
-# Backend
-
-## Set up
+## Set up backend
 
 1. Go to the back directory and install npm dependencies.
 
@@ -19,6 +17,11 @@ API_POPULATION_DATA_URL=(endpoint to /population)
 API_FLAG_URL=(endpoint to flag/images)
 ```
 
+Then do:
+
+```
+npm run dev
+```
 
 ## Routes
 
@@ -33,3 +36,12 @@ This will return a list of the countries available.
 > /country/countryCode
 
 You can use both ISO2 or ISO3 country code format (two or three characters is fine). Country codes obtained from the /countries endpoint should work, and it's case insensitive.
+
+
+## Set up frontend
+
+```
+cd front
+npm install
+npm run dev
+```
