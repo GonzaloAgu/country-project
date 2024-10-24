@@ -1,0 +1,14 @@
+{
+  "name": "developstoday-countries",
+  "version": "0.0.1",
+  "description": "Technical task for developstoday",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Gonzalo Agu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
