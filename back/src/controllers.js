@@ -19,11 +19,15 @@ export const getCountryInfo = (req, res) => {
     fetch(`${process.env.API_COUNTRY_INFO_URL}/${countryCode}`)
         .then(res => res.json())
         .then(data => {
-            if(data.status === 404) throw new Error("This country doesn't exist")
+            if(data.status === 404) throw new Error("This country doesn't exist. Beware you must use iso3 (3 characters) for country codes!")
             return data;
         })
         .then(data => {
             response.borders = data.borders;
+            response.commonName = data.commonName;
+            response.officialName = data.officialName;
+            response.region = data.region;
+            
             // look for population of the country
             return obtainPopulationData(countryCode);
         })
