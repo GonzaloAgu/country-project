@@ -1,4 +1,4 @@
-import { obtainPopulationData, obtainFlagURL } from "./services.js";
+import { obtainPopulationData, obtainFlagURL, obtainISO3CountryCode } from "./services.js";
 
 export const getCountryList = (req, res) => {
     
@@ -12,14 +12,25 @@ export const getCountryList = (req, res) => {
         })
 }
 
-export const getCountryInfo = (req, res) => {
-    const countryCode = req.params.countryCode;
+export const getCountryInfo = async(req, res) => {
+
+    let countryCode = req.params.countryCode.toUpperCase();
+
+    if(countryCode.length == 2){
+        try {
+            countryCode = await obtainISO3CountryCode(countryCode);
+        } catch(e) {
+            res.status(404).json( { message: e.message, countryCode , status: 404  } )
+        }
+    }
+
+
     const response = {};
 
     fetch(`${process.env.API_COUNTRY_INFO_URL}/${countryCode}`)
         .then(res => res.json())
         .then(data => {
-            if(data.status === 404) throw new Error("This country doesn't exist. Beware you must use iso3 (3 characters) for country codes!")
+            if(data.status === 404) throw new Error("This country doesn't exist. Try using iso3 format (3 characters) for country codes!")
             return data;
         })
         .then(data => {
@@ -27,7 +38,7 @@ export const getCountryInfo = (req, res) => {
             response.commonName = data.commonName;
             response.officialName = data.officialName;
             response.region = data.region;
-            
+
             // look for population of the country
             return obtainPopulationData(countryCode);
         })
