@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
+import { Image } from "react-bootstrap";
 
 export default function CountryView() {
 
@@ -14,12 +15,17 @@ export default function CountryView() {
                 setCountry(data)
             })
             .catch(err => console.error(err))
-    })
-    
-    return country? (
-    <>
-        <div>{country.commonName}</div>
-        <div>Work in progress...</div>
-    </>
+    }, [])
+
+    return country ? (
+        <>
+            <Image src={country.flag}></Image>
+            <div>
+                <h1>
+                    {country.commonName}
+                </h1>
+            </div>
+            <div>Work in progress...</div>
+        </>
     ) : null;
 }
