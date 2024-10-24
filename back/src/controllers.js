@@ -16,6 +16,8 @@ export const getCountryInfo = async(req, res) => {
 
     let countryCode = req.params.countryCode.toUpperCase();
 
+    console.log("looking for: ", countryCode)
+
     if(countryCode.length == 2){
         try {
             countryCode = await obtainISO3CountryCode(countryCode);

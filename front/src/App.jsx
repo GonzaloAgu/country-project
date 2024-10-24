@@ -3,36 +3,25 @@ import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { ListGroup, ListGroupItem } from 'react-bootstrap'
+import HomePage from "./pages/HomePage.jsx"
+import CountryView from './pages/CountryView.jsx';
 import Header from './components/Header.jsx'
-import CountryItem from './components/CountryItem.jsx';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom'
 
 function App() {
-  const [countries, setCountries] = useState([])
 
-  const API_COUNTRIES_LIST_URL = import.meta.env.VITE_API_BASE_URL + ":" + import.meta.env.VITE_API_PORT + "/countries"
-
-  useEffect(()=>{
-    fetch(API_COUNTRIES_LIST_URL)
-      .then(res => res.json())
-      .then(list => {
-        setCountries(list);
-      })
-      .catch(error => {
-        setCountries([{countryCode: "ERROR", name: "There was an error fetching from the server" + error}])
-      })
-  }, [])
-
-  const handlerClickOnCountry = (event) => {
-    console.log("click")
-  }
-
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/country" element={<CountryView />} />
+    </Routes>
+  )
   return (
     <>
     <Header className="mb-5" title="Welcome to my Country Project"/>
     <ListGroup className='col-md-6 m-auto'>
       {countries.map(country => (
         <ListGroupItem key={country.countryCode} onClick={handlerClickOnCountry} className=' hoverable'>{country.name}</ListGroupItem>
-        //<CountryItem country={country} key={country.countryCode}></CountryItem>
       ))}
     </ListGroup>
     </>
