@@ -12,7 +12,7 @@ export const obtainPopulationData = countryCode => {
             }
             return selectedCountry.populationCounts;
         })
-        .catch(err => console.error("Couldn't find country's population. " + err))
+        .catch(err => console.error("Couldn't find" + selectedCountry.country + " population. " + err))
 }
 
 export const obtainFlagURL = countryCode => {
