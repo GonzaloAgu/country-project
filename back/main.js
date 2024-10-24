@@ -10,4 +10,6 @@ app.use(router);
 const port = process.env.PORT;
 app.listen(port);
 
-console.log("Server listening at http://localhost:" + port);
+
+console.log("Server listening at");
+console.log("http://localhost:" + port) 

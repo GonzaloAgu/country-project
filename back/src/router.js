@@ -1,15 +1,11 @@
 import express from "express";
+import { getCountryList, getCountryInfo } from "./controllers.js";
 
 const router = express.Router();
 
-router.get("/countries", (req, res) => {
-    fetch('https://date.nager.at/api/v3/AvailableCountries')
-        .then(res => res.json())
-        .then(data => {
-            res.send(data);
-        })
-})
+router.get("/countries", getCountryList)
 
+router.get("/country/:countryCode", getCountryInfo)
 
 
 export default router;
