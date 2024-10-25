@@ -5,7 +5,7 @@ export default function Header({ title }) {
     return (
         <>
             <Navbar className="bg-body-tertiary">
-                <Container>
+                <Container className="d-flex justify-content-center">
                     <Navbar.Brand href="/" className="hoverable">Home</Navbar.Brand>
                 </Container>
             </Navbar>
