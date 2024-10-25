@@ -9,8 +9,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: '*', // Permitir todas las solicitudes de origen
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
   }));
   
 app.use(router);

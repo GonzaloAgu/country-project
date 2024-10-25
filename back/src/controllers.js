@@ -16,13 +16,12 @@ export const getCountryInfo = async(req, res) => {
 
     let countryCode = req.params.countryCode.toUpperCase();
 
-    console.log("looking for: ", countryCode)
-
     if(countryCode.length == 2){
         try {
             countryCode = await obtainISO3CountryCode(countryCode);
         } catch(e) {
-            res.status(404).json( { message: e.message, countryCode , status: 404  } )
+            res.status(404).json( { message: "There was an internal error trying to reach this code.", countryCode , status: 404  } )
+            return;
         }
     }
 
@@ -40,6 +39,7 @@ export const getCountryInfo = async(req, res) => {
             response.commonName = data.commonName;
             response.officialName = data.officialName;
             response.region = data.region;
+            response.countryCode = countryCode;
 
             // look for population of the country
             return obtainPopulationData(countryCode);
