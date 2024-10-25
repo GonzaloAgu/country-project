@@ -1,3 +1,6 @@
+## Requisites
+This project requires to be run on a NodeJS 18+ environment since it uses the native fetch API ("node-fetch" dependency is not included)
+
 ## Set up backend
 
 1. Go to the back directory and install npm dependencies.
