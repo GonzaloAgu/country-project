@@ -23,13 +23,13 @@ export default function CountryView() {
 
     return country ? (
         <>
-            <Image src={country.flag}></Image>
             <div>
+                <Image src={country.flag} thumbnail width={120}></Image>
                 <h1>
                     {country.commonName}
                 </h1>
             </div>
-            <div>Work in progress...</div>
+            <div></div>
         </>
     ) : null;
 }

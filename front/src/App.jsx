@@ -16,16 +16,6 @@ function App() {
       <Route path="/country/:countryCode" element={<CountryView />} />
     </Routes>
   )
-  return (
-    <>
-    <Header className="mb-5" title="Welcome to my Country Project"/>
-    <ListGroup className='col-md-6 m-auto'>
-      {countries.map(country => (
-        <ListGroupItem key={country.countryCode} onClick={handlerClickOnCountry} className=' hoverable'>{country.name}</ListGroupItem>
-      ))}
-    </ListGroup>
-    </>
-  )
 }
 
 export default App

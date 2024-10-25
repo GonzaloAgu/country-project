@@ -30,11 +30,7 @@ export default function HomePage() {
     return (
         <>
             <Header className="mb-5" title="Welcome to my Country Project" />
-            <ListGroup className='col-md-6 m-auto'>
-                {countries.map(country => (
-                    <ListGroupItem key={country.countryCode} onClick={() => handlerClickOnCountry(country.countryCode)} className='hoverable'>{country.name}</ListGroupItem>
-                ))}
-            </ListGroup>
+            <CountryList countries={countries}></CountryList>
         </>
     )
 }
