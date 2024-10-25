@@ -3,7 +3,6 @@ import React from "react";
 import {ResponsiveContainer, LineChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Line} from "recharts";
 
 export default function PopulationChart({data}) {
-    console.log("from chart")
     
     const tooltipStyle = {
         backgroundColor: "#333",
