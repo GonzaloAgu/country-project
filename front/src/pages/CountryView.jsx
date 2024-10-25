@@ -1,8 +1,9 @@
 import React, { useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Header";
-import { Image } from "react-bootstrap";
+import { Image, Alert } from "react-bootstrap";
 import CountryList from "../components/CountryList";
+import PopulationChart from "../components/PopulationChart"
 
 export default function CountryView() {
 
@@ -13,7 +14,6 @@ export default function CountryView() {
     const API_COUNTRY_URL = import.meta.env.VITE_API_BASE_URL + ":" + import.meta.env.VITE_API_PORT + "/country/" + countryCode;
 
     useEffect(() => {
-        console.log("AHH")
         fetch(API_COUNTRY_URL)
             .then(res => res.json())
             .then(data => {
@@ -31,6 +31,7 @@ export default function CountryView() {
             <Alert variant={"danger"}>The country with {countryCode} code couldn't be reached.</Alert>
     )
 
+
     return country ? (
         <>
             <div>
@@ -47,6 +48,12 @@ export default function CountryView() {
                     Bordering countries
                 </h2>
                 <CountryList countries={country.borders}></CountryList>
+            </div>
+            <div className="mt-4">
+                <h2>
+                    Population over time
+                </h2>
+                <PopulationChart data={country.populationCounts}></PopulationChart>
             </div>
         </>
     ) : null;
