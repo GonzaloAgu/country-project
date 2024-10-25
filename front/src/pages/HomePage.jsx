@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import CountryList from "../components/CountryList";
 
 export default function HomePage() {
 
@@ -23,9 +24,6 @@ export default function HomePage() {
     }, [])
 
 
-    const handlerClickOnCountry = (code) => {
-        window.location.href = `/country/${code}`;
-    }
 
     return (
         <>
